@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id('OrderId');
             $table->unsignedBigInteger('CustomerId');
-            $table->foreign('CustomerId');
+            $table->foreign('CustomerId')->references('CustomerId')->on('customers');
             $table->timestamp('OrderStatus')->nullable();
             $table->unsignedDecimal('OrderTotal', 8, 2);
             $table->timestamp('CreatedDateTime')->nullable();
