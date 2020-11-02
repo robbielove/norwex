@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    //enable calling $order->completedAt
+    public function getCompletedAtAttritube() {
+        return $this->OrderStatus;
+    }
 }
