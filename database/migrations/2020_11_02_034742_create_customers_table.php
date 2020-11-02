@@ -13,7 +13,6 @@ class CreateCustomersTable extends Migration
      */
     public function up()
     {
-//        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Schema::create('customers', function (Blueprint $table) {
             $table->id('CustomerId');
             $table->string('CustomerStatusId')->nullable();
@@ -21,7 +20,6 @@ class CreateCustomersTable extends Migration
             $table->string('Name');
             $table->timestamps();
         });
-//        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     /**

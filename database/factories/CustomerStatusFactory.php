@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\CustomerStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class CustomerStatusFactory extends Factory
 {
@@ -22,7 +23,11 @@ class CustomerStatusFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'Name' => $this->faker->randomElement(['Active', 'Removed']),
+            'Code' => function (array $data) {
+                return Str::upper(Str::limit($data['Name'], '2'));
+            }
         ];
+//        dd($this);
     }
 }
