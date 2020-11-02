@@ -261,6 +261,12 @@
             color: rgba(26, 32, 44, var(--text-opacity))
         }
 
+        .text-red {
+            --text-opacity: 1;
+            color: #f56565;
+            color: rgba(26, 32, 44, var(--text-opacity))
+        }
+
         .underline {
             text-decoration: underline
         }
@@ -412,10 +418,10 @@
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <h1 class="text-gray-900 dark:text-white">Customers</h1>
 
-        <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             @foreach($customers as $customer)
+            <div class="mt-8 dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2">
-                    <h2 class="text-gray-900 dark:text-white">{{$customer->Name}}</h2>
+                    <h2 class="@if($customer->CustomerStatusId=='RE') dark:text-red-600 @else dark:text-white @endif">{{$customer->Name}}</h2>
                     <h3 class="text-gray-900 dark:text-white">{{$customer->CustomerId}}</h3>
 {{--                    @dd($customer->customerStatus(), $customer->CustomerStatusId)--}}
                     <h3 class="text-gray-900 dark:text-white">{{optional($customer->CustomerStatus())->Name}}</h3>
@@ -423,8 +429,8 @@
                     <h6 class="text-gray-900 dark:text-white">{{$customer->created_at}}</h6>
                     <h6 class="text-gray-900 dark:text-white">{{$customer->updated_at}}</h6>
                 </div>
+            </div>
             @endforeach
-        </div>
 
                 <div class="p-6">
                     <div class="flex items-center">

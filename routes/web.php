@@ -20,3 +20,7 @@ Route::get('/', function () {
 
 // get the customers
 Route::get('customers', [CustomerController::class, 'Action']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

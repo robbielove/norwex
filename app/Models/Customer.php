@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+
+    //enable calling $order->completedAt
+    public function getCustomerNameAttritube() {
+        return $this->Name;
+    }
+    /**
+     * Get the customer status
+     */
+    public function customerStatus()
+    {
+        return $this->belongsTo('App\Models\CustomerStatus', 'Code', 'CustomerStatusId');
+    }
 }
