@@ -15,7 +15,8 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id('CustomerId');
-            $table->id('CustomerStatusId');
+            $table->string('CustomerStatusId');
+            $table->foreign('CustomerStatusId');
             $table->string('Name');
             $table->timestamps();
         });
