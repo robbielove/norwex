@@ -20,4 +20,12 @@ class Customer extends Model
     {
         return $this->belongsTo('App\Models\CustomerStatus', 'Code', 'CustomerStatusId');
     }
+
+    /**
+     * Get the customer status
+     */
+    public function Orders()
+    {
+        return $this->belongsTo('App\Models\Order', 'OrderId', 'OrderId');
+    }
 }

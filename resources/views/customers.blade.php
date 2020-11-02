@@ -43,26 +43,10 @@
             height: auto
         }
 
-        .bg-white {
-            --bg-opacity: 1;
-            background-color: #fff;
-            background-color: rgba(255, 255, 255, var(--bg-opacity))
-        }
-
         .bg-gray-100 {
             --bg-opacity: 1;
             background-color: #f7fafc;
             background-color: rgba(247, 250, 252, var(--bg-opacity))
-        }
-
-        .border-gray-200 {
-            --border-opacity: 1;
-            border-color: #edf2f7;
-            border-color: rgba(237, 242, 247, var(--border-opacity))
-        }
-
-        .border-t {
-            border-top-width: 1px
         }
 
         .flex {
@@ -77,49 +61,8 @@
             display: none
         }
 
-        .items-center {
-            align-items: center
-        }
-
         .justify-center {
             justify-content: center
-        }
-
-        .font-semibold {
-            font-weight: 600
-        }
-
-        .h-5 {
-            height: 1.25rem
-        }
-
-        .h-8 {
-            height: 2rem
-        }
-
-        .h-16 {
-            height: 4rem
-        }
-
-        .text-sm {
-            font-size: .875rem
-        }
-
-        .text-lg {
-            font-size: 1.125rem
-        }
-
-        .leading-7 {
-            line-height: 1.75rem
-        }
-
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto
-        }
-
-        .ml-1 {
-            margin-left: .25rem
         }
 
         .mt-2 {
@@ -383,7 +326,16 @@
             .dark\:text-red {
                 --text-opacity: 1;
                 color: #f56565;
-                /*color: rgba(26, 32, 44, var(--text-opacity))*/
+            }
+
+            .dark\:text-orange {
+                --text-opacity: 1;
+                color: #DD6B20;
+            }
+
+            .dark\:text-green {
+                --text-opacity: 1;
+                color: #38A169;
             }
         }
     </style>
@@ -409,30 +361,30 @@
                 @else
                     <a href="{{ route('login') }}" class="ml-4 dark:text-white underline">Login</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 dark:text-white underline">Register</a>
-                    @endif
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="ml-4 dark:text-white underline">Register</a>
                 @endif
-            </div>
-        @endif
+            @endif
+        </div>
+    @endif
 
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <h1 class="text-gray-900 dark:text-white">Customers</h1>
+    <div>
+        <h1 class="text-gray-900 dark:text-white">Customers</h1>
 
+        <div class="ui compact four column grid">
             @foreach($customers as $customer)
-                <div class="mt-8 dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-12 md:grid-cols-2">                    <h2 class="mt-8 @if($customer->CustomerStatusId=='RE') dark:text-red @else dark:text-white @endif">{{$customer->Name}}</h2>
-
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                    </div>
-                        <h3 class="mt-8 text-gray-900 dark:text-white">{{$customer->CustomerId}}</h3>
+                <div class="one wide column">
+                    <div class="ui segment">
+                        <h2 class="@if($customer->CustomerStatusId=='RE') dark:text-red @else dark:text-orange @endif">{{$customer->Name}}</h2>
+                        <h3 class="mt-2 dark:text-white">Customer Id: {{$customer->CustomerId}}</h3>
+                        <h3 class="mt-2 dark:text-white">Total Orders: {{optional($customer->Orders())->count()}}</h3>
                         {{--                    @dd($customer->customerStatus(), $customer->CustomerStatusId)--}}
-                        <h3 class="mt-8 text-gray-900 dark:text-white">{{optional($customer->CustomerStatus())->Name}}</h3>
-                        <h5 class="mt-8 text-gray-900 dark:text-white">{{$customer->CustomerStatusId}}</h5>
-                        <h6 class="mt-8 text-gray-900 dark:text-white">Created <b>{{$customer->created_at}}</b></h6>
-                        <h6 class="mt-8 text-gray-900 dark:text-white">Updated <b>{{$customer->updated_at}}</b></h6>
-
+                        <h3 class="mt-2 dark:text-white">{{optional($customer->CustomerStatus())->Name}}</h3>
+                        <h4 class="mt-2 dark:text-white">Customer
+                            Status: {{$customer->CustomerStatusId}}</h5>
+                        <h5 class="mt-2 dark:text-white">Created: <b>{{$customer->created_at}}</b></h6>
+                        <h5 class="mt-2 dark:text-white">Updated: <b>{{$customer->updated_at}}</b></h6>
+                    </div>
                 </div>
             @endforeach
 
@@ -443,5 +395,6 @@
         </div>
 
     </div>
+</div>
 </body>
 </html>
