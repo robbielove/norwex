@@ -16,7 +16,7 @@ class CreateCustomerStatusesTable extends Migration
         Schema::create('customer_statuses', function (Blueprint $table) {
             $table->id('CustomerStatusId');
             $table->string('Name');
-            $table->string('Code');
+            $table->string('Code')->nullable()->index();
             $table->timestamps();
         });
     }
