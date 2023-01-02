@@ -382,8 +382,7 @@
                         <h3 class="mt-2 dark:text-white">{{optional($customer->CustomerStatus())->Name}}</h3>
                         <h4 class="mt-2 dark:text-white">Customer
                             Status: {{$customer->CustomerStatusId}}</h5>
-                        <h5 class="mt-2 dark:text-white">Created: <b>{{$customer->created_at->diffForHumans()}}</b></h6>
-                        <h5 class="mt-2 dark:text-white">Updated: <b>{{$customer->updated_at->diffForHumans()}}</b></h6>
+                        <h5 class="mt-2 dark:text-white">Created: <b>{{$customer->created_at->diffForHumans()}}</b>, Updated: <b>{{$customer->updated_at->diffForHumans()}}</b></h6>
                     </div>
                 </div>
             @endforeach

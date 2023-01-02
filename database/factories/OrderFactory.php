@@ -22,7 +22,7 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'Name' => $this->faker->name,
         ];
     }
 }

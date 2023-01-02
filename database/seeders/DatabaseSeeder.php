@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             CustomerStatusSeeder::class,
-            CustomerSeeder::class
+            CustomerSeeder::class,
+            OrderSeeder::class
         ]);
 
         $this->command->info('Customer table seeded!');
